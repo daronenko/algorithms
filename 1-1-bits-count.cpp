@@ -11,13 +11,15 @@
  * Целое число - количество бит
  *
  * Пример 1
- * Ввод	Вывод
+ * Ввод
  * 1
+ * Вывод
  * 1
  *
  * Пример 2
- * Ввод	Вывод
+ * Ввод
  * 5
+ * Вывод
  * 2
  */
 
@@ -26,8 +28,8 @@
 #include <cstdint>
 
 
-std::uint8_t CountBits(std::uint32_t number) {
-    std::uint8_t bits_count = 0;
+std::uint16_t CountBits(std::uint32_t number) {
+    std::uint16_t bits_count = 0;
     for (; number; number >>= 2) {
         if (number & 1) {
             ++bits_count;
@@ -42,8 +44,7 @@ void run(std::istream& input, std::ostream& output) {
     std::uint32_t number;
     input >> number;
 
-    // `+` is needed to print number instead of character
-    output << +CountBits(number) << std::endl;
+    output << CountBits(number) << std::endl;
 }
 
 
