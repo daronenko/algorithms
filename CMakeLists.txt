@@ -4,4 +4,4 @@ project(vk_algorithms)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(vk_algorithms
-        1-3-checking-bits.cpp)
+        1-4-inverting-bit.cpp)
