@@ -36,7 +36,7 @@ std::uint16_t GetKthBit(std::uint32_t number, std::uint16_t k) {
 }
 
 
-void run(std::istream& input, std::ostream& output) {
+void Run(std::istream& input, std::ostream& output) {
     std::uint32_t number;
     std::uint16_t k;
     input >> number >> k;
@@ -46,6 +46,6 @@ void run(std::istream& input, std::ostream& output) {
 
 
 int main() {
-    run(std::cin, std::cout);
+    Run(std::cin, std::cout);
     return 0;
 }

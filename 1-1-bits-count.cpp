@@ -40,7 +40,7 @@ std::uint16_t CountBits(std::uint32_t number) {
 }
 
 
-void run(std::istream& input, std::ostream& output) {
+void Run(std::istream& input, std::ostream& output) {
     std::uint32_t number;
     input >> number;
 
@@ -49,6 +49,6 @@ void run(std::istream& input, std::ostream& output) {
 
 
 int main() {
-    run(std::cin, std::cout);
+    Run(std::cin, std::cout);
     return 0;
 }
