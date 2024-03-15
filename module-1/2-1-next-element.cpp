@@ -33,7 +33,7 @@
 #include <cstdint>
 
 
-constexpr bool DEBUG = false;
+constexpr bool DEBUG = true;
 
 
 template <typename InputIt, typename T>
@@ -45,11 +45,11 @@ std::pair<InputIt, InputIt> GetBounds(InputIt first, InputIt last, const T& targ
     while (right < last && *right <= target) {
         std::size_t dist = std::distance(first, right);
         first = right;
-        if (std::next(right, dist) <= last) {
-            std::advance(right, dist);
-        } else {
-            right = last;
-        }
+        std::advance(right, 2 * dist);
+    }
+
+    if (right > last) {
+        right = last;
     }
 
     return {first, right};
@@ -58,7 +58,7 @@ std::pair<InputIt, InputIt> GetBounds(InputIt first, InputIt last, const T& targ
 void TestGetBounds() {
     int numbers[] = {2, 4, 5, 7};
     auto [left, right] = GetBounds(std::begin(numbers), std::end(numbers), 6);
-    assert(*left == 5 && *right == 7);
+    assert(*left == 4 && *right == 7);
 }
 
 
