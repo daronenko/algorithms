@@ -36,8 +36,8 @@
 constexpr bool DEBUG = true;
 
 
-template <typename InputIt, typename T>
-std::pair<InputIt, InputIt> GetBounds(InputIt first, InputIt last, const T& target) {
+template <typename ForwardIt, typename T>
+std::pair<ForwardIt, ForwardIt> GetBounds(ForwardIt first, ForwardIt last, const T& target) {
     assert(std::distance(first, last) > 0);
     assert(std::is_sorted(first, last));
 

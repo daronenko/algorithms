@@ -22,8 +22,8 @@
 constexpr bool DEBUG = true;
 
 
-template <typename InputIt>
-std::pair<InputIt, InputIt> GetBounds(InputIt first, InputIt last) {
+template <typename BidirIt>
+std::pair<BidirIt, BidirIt> GetBounds(BidirIt first, BidirIt last) {
     assert(std::distance(first, last) > 0);
 
     if (std::distance(first, last) == 1) {
@@ -56,8 +56,8 @@ void TestGetBounds() {
 }
 
 
-template <typename ForwardIt>
-ForwardIt FindPeak(ForwardIt first, ForwardIt last) {
+template <typename BidirIt>
+BidirIt FindPeak(BidirIt first, BidirIt last) {
     assert(std::distance(first, last) > 0);
 
     if (std::distance(first, last) == 1) {
