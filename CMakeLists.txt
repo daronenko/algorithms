@@ -4,5 +4,5 @@ project(vk_algorithms)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(vk_algorithms
-        module-1/2-2-unimodal-sequence.cpp
-        )
+        module-1/2-3-sets-intersection.cpp
+)
