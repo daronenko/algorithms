@@ -53,7 +53,7 @@ constexpr bool DEBUG = true;
 template <typename T>
 class Queue {
  public:
-    explicit Queue(): buffer_(new T[capacity_]) {}
+    Queue(): buffer_(new T[capacity_]) {}
 
     Queue& operator = (const T& rhs) {
         if (this == rhs) {
@@ -63,6 +63,8 @@ class Queue {
         delete[] buffer_;
         size_ = rhs.size_;
         capacity_ = rhs.capacity_;
+        head_ = rhs.head_;
+        tail_ = rhs.tail_;
         buffer_ = new T[capacity_];
         memcpy(buffer_, rhs.buffer_, size_);
 
@@ -115,6 +117,10 @@ class Queue {
     }
 
     T& Front() {
+        if (Empty()) {
+            throw std::length_error("cannot get front value from empty queue");
+        }
+
         return buffer_[head_];
     }
 

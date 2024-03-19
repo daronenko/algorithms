@@ -46,13 +46,13 @@
 #include <cassert>
 
 
-constexpr bool DEBUG = false;
+constexpr bool DEBUG = true;
 
 
 template <typename T>
 class Deque {
 public:
-    explicit Deque(): buffer_(new T[capacity_]) {}
+    Deque(): buffer_(new T[capacity_]) {}
 
     Deque& operator = (const T& rhs) {
         if (this == rhs) {
@@ -62,6 +62,8 @@ public:
         delete[] buffer_;
         size_ = rhs.size_;
         capacity_ = rhs.capacity_;
+        head_ = rhs.head_;
+        tail_ = rhs.tail_;
         buffer_ = new T[capacity_];
         memcpy(buffer_, rhs.buffer_, size_);
 
@@ -113,19 +115,19 @@ public:
 
     T PopFront() {
         if (Empty()) {
-            throw std::length_error("cannot pop value from empty queue");
+            throw std::length_error("cannot pop value from empty deque");
         }
 
+        --size_;
         T temp = buffer_[head_++];
         head_ %= capacity_;
-        --size_;
 
         return temp;
     }
 
     T PopBack() {
         if (Empty()) {
-            throw std::length_error("cannot pop value from empty queue");
+            throw std::length_error("cannot pop value from empty deque");
         }
 
         --size_;
@@ -133,11 +135,19 @@ public:
         return buffer_[tail_];
     }
 
-    [[nodiscard]] T& Front() const noexcept {
+    T& Front() {
+        if (Empty()) {
+            throw std::length_error("cannot get front value from empty deque");
+        }
+
         return buffer_[head_];
     }
 
-    [[nodiscard]] T& Back() const noexcept {
+    T& Back() {
+        if (Empty()) {
+            throw std::length_error("cannot get back value from empty deque");
+        }
+
         return buffer_[(tail_ + capacity_ - 1) % capacity_];
     }
 
@@ -239,7 +249,7 @@ void TestRun() {
     {
         std::stringstream input, output;
 
-        input << "2\n";
+        input << "9\n";
         input << "3 22\n";
         input << "3 33\n";
         input << "3 44\n";
