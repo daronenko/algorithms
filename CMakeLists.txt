@@ -8,5 +8,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options(-Werror -Wall -Wextra -Wpedantic -g -fno-omit-frame-pointer)
 
 add_executable(vk_algorithms
-        module-1/3-3-queue-with-stack.cpp
+        module-1/4-1-merge-arrays.cpp
 )
