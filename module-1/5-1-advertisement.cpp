@@ -180,7 +180,6 @@ void TestRun() {
         input << "23 24\n";
 
         Run(input, output);
-        std::cout << output.str() << std::endl;
         assert(output.str() == "5\n");
     }
 }
