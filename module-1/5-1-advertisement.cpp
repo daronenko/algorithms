@@ -27,7 +27,7 @@
 #include <algorithm>
 
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 
 
 template <typename ForwardIt, typename Comparator = std::less<>>
@@ -94,7 +94,12 @@ void MergeSort(ForwardIt first, ForwardIt last, Comparator compare = Comparator{
 
     for (std::size_t i = 1; i < size; i *= 2) {
         for (std::size_t j = 0; j < size - i; j += 2 * i) {
-            InplaceMerge(first + j, first + j + i, first + std::min(j + 2 * i, size), compare);
+            InplaceMerge(
+                    std::next(first, j),
+                    std::next(first, j + i),
+                    std::next(first, std::min(j + 2 * i, size)),
+                    compare
+            );
         }
     }
 }
@@ -153,14 +158,14 @@ void Run(std::istream& input, std::ostream& output) {
             first_ad_time = intervals[i].end - 1;
             second_ad_time = intervals[i].end;
         } else if (intervals[i].begin > first_ad_time
-                  && intervals[i].begin < second_ad_time) {
-            ++ads_count;
-            first_ad_time = intervals[i].end;
-        } else if (intervals[i].begin > first_ad_time
-                && intervals[i].end > second_ad_time) {
+                   && intervals[i].end > second_ad_time) {
             ++ads_count;
             first_ad_time = second_ad_time;
             second_ad_time = intervals[i].end;
+        } else if (intervals[i].begin > first_ad_time
+                   && intervals[i].begin < second_ad_time) {
+            ++ads_count;
+            first_ad_time = intervals[i].end;
         }
     }
 
