@@ -8,5 +8,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options(-Werror -Wall -Wextra -Wpedantic -g -fno-omit-frame-pointer)
 
 add_executable(vk_algorithms
-        module-1/7-3-binary-msd.cpp
+        module-2/1-1-hash-table.cpp
 )
