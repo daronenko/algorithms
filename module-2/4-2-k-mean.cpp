@@ -142,14 +142,14 @@ class AVLTree {
             }
 
             Node* extracted_node;
-            if (left->height < right->height) {
-                Node* right_node = extractMin(right, extracted_node);
-                extracted_node->right = right_node;
-                extracted_node->left = left;
-            } else {
+            if (left->height > right->height) {
                 Node* left_node = extractMax(left, extracted_node);
                 extracted_node->left = left_node;
                 extracted_node->right = right;
+            } else {
+                Node* right_node = extractMin(right, extracted_node);
+                extracted_node->right = right_node;
+                extracted_node->left = left;
             }
 
             return doBalance(extracted_node);
