@@ -8,5 +8,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options(-Werror -Wall -Wextra -Wpedantic -g -fno-omit-frame-pointer)
 
 add_executable(vk_algorithms
-        rk-2/2-task.cpp
+        rk-2/3-task.cpp
 )
