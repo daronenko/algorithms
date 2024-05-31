@@ -10,7 +10,5 @@ add_compile_options(-Werror -Wall -Wextra -Wpedantic -g -fno-omit-frame-pointer)
 # add_subdirectory(module-3)
 
 add_executable(vk_algorithms
-    # rk-3/1-task.cpp
-    # rk-3/2-task.cpp
-    rk-3/3-task.cpp
+    module-3/rk/3-task.cpp
 )
